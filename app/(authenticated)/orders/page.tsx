@@ -3,6 +3,16 @@ import { PlusIcon } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 import { ListOrderTable } from './_components/ListOrderTable'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Pedidos",
+  keywords: ["gestão de contratos", "gestão de logística", "integração comercial e logística"],
+  description: "O seu sistema de gestão da comercial e logística",
+  authors: [
+    { name: "Marcio David", url: "https://md-webdeveloper.vercel.app" },
+  ],
+};
 
 export default function Orders() {
   return (

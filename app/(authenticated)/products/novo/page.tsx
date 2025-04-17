@@ -5,6 +5,16 @@ import React from "react";
 import NewProductForm from "../_components/NewProductForm";
 import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/prisma";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Novo Produto",
+  keywords: ["gestão de contratos", "gestão de logística", "integração comercial e logística"],
+  description: "O seu sistema de gestão da comercial e logística",
+  authors: [
+    { name: "Marcio David", url: "https://md-webdeveloper.vercel.app" },
+  ],
+};
 
 export default async function NovoProduto() {
   const { userId } = auth();

@@ -26,9 +26,15 @@ export interface OrderProps {
     number: string | null;
     type: string;
     productId: number;
+    product: {
+        name: string;
+    }
     unit: string;
     price: number;
     customerId: number;
+    customer: {
+        name: string;
+    }
     description: string;
     quantity: number;
 }

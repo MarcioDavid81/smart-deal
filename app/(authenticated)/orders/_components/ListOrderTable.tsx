@@ -48,12 +48,12 @@ export function ListOrderTable() {
     {
       accessorKey: "product",
       header: "Produto",
-      cell: ({ row }) => <span className="uppercase">{row.original.productId}</span>,
+      cell: ({ row }) => <span className="uppercase">{row.original.product?.name}</span>,
     },
     {
       accessorKey: "customer",
       header: "Cliente",
-      cell: ({ row }) => <span className="uppercase">{row.original.customerId}</span>,
+      cell: ({ row }) => <span className="uppercase">{row.original.customer?.name}</span>,
     },
     {
       accessorKey: "quantity",

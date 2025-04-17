@@ -8,6 +8,7 @@ import OrdersList from './_components/OrdersList';
 import CustomersList from './_components/CustomersList';
 
 export const metadata: Metadata = {
+  title: "Dashboard",
   keywords: ["gestão de contratos", "gestão de logística", "integração comercial e logística"],
   description: "O seu sistema de gestão da comercial e logística",
   authors: [
