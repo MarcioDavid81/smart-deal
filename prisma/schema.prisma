@@ -1,0 +1,110 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Company {
+  id        String        @id @default(cuid())
+  name      String
+  userId    String
+  users     UserCompany[]
+  customers Customer[]
+  products  Product[]
+  orders    Order[]
+  createdAt DateTime      @default(now())
+}
+
+model UserCompany {
+  id        String  @id @default(cuid())
+  userId    String
+  companyId String
+  company   Company @relation(fields: [companyId], references: [id])
+}
+
+model Product {
+  id          Int         @id @default(autoincrement())
+  name        String      @unique
+  description String
+  unit        ProductUnit
+  price       Float
+  quantity    Int
+  userId      String
+  orders      Order[]
+  companyId   String
+  company     Company     @relation(fields: [companyId], references: [id])
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model Customer {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  adress    String
+  city      String
+  state     String
+  cep       String
+  phone     String
+  email     String
+  ie        String
+  cnpj      String
+  userId    String
+  orders    Order[]
+  companyId String
+  company   Company  @relation(fields: [companyId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Order {
+  id          Int          @id @default(autoincrement())
+  date        DateTime
+  number      String?
+  type        OrderType
+  product     Product      @relation(fields: [productId], references: [id])
+  productId   Int
+  unit        ProductUnit
+  customer    Customer     @relation(fields: [customerId], references: [id])
+  customerId  Int
+  description String
+  price       Float
+  quantity    Int
+  freight     OrderFreight
+  payment     DateTime
+  userId      String
+  status      OrderStatus
+  companyId   String
+  company     Company      @relation(fields: [companyId], references: [id])
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+enum OrderType {
+  Compra
+  Venda
+}
+
+enum OrderStatus {
+  Pendente
+  Carregando
+  Finalizado
+}
+
+enum OrderFreight {
+  CIF
+  FOB
+  OUTRO
+}
+
+enum ProductUnit {
+  UN
+  KG
+  MT
+  LT
+  M3
+  TN
+  SC
+}
