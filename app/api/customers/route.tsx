@@ -10,12 +10,22 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const orders = await db.customer.findMany({
-      where: { userId },
+    // Busca o usuário logado para obter o companyId
+    const user = await db.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (!user || !user.companyId) {
+      return NextResponse.json({ message: "Usuário não está vinculado a uma empresa" }, { status: 403 });
+    }
+
+    // Busca os clientes da empresa do usuário
+    const customers = await db.customer.findMany({
+      where: { companyId: user.companyId },
       orderBy: { name: "asc" },
     });
 
-    return NextResponse.json(orders);
+    return NextResponse.json(customers);
   } catch (error) {
     console.error("Erro ao buscar clientes:", error);
     return NextResponse.json(

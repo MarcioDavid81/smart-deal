@@ -37,12 +37,17 @@ export function ListCustomerTable() {
     {
       accessorKey: "adress",
       header: "Endereço",
-      cell: ({ row }) => new Date(row.original.adress).toLocaleDateString(),
+      cell: ({ row }) => <span className="uppercase">{row.original.adress}</span>,
     },
     {
       accessorKey: "city",
       header: "Cidade",
       cell: ({ row }) => <span className="uppercase">{row.original.city}</span>,
+    },
+    {
+      accessorKey: "state",
+      header: "Estado",
+      cell: ({ row }) => <span className="uppercase">{row.original.state}</span>,
     },
     {
       accessorKey: "ie",

@@ -7,6 +7,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id         String   @id // mesmo ID do usuário no Clerk
+  companyId  String
+  company    Company  @relation(fields: [companyId], references: [id])
+}
+
 model Company {
   id        String        @id @default(cuid())
   name      String
@@ -15,6 +21,7 @@ model Company {
   customers Customer[]
   products  Product[]
   orders    Order[]
+  Users     User[]
   createdAt DateTime      @default(now())
 }
 

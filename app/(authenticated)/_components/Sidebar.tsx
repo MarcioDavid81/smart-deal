@@ -117,7 +117,7 @@ const Sidebar = () => {
       </div>
       
       <div className="flex flex-col items-center pt-4">
-        <UserButton />
+        <UserButton showName={isOpen} />
       </div>
     </div>
   );

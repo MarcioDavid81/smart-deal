@@ -10,8 +10,18 @@ export async function GET(req: NextRequest) {
   }
 
   try {
+    // Busca o usuário logado para obter o companyId
+    const user = await db.user.findUnique({
+      where: { id: userId },
+    });
+
+    if (!user || !user.companyId) {
+      return NextResponse.json({ message: "Usuário não está vinculado a uma empresa" }, { status: 403 });
+    }
+
+    // Busca os produtos da empresa do usuário
     const products = await db.product.findMany({
-      where: { userId },
+      where: { companyId: user.companyId },
       orderBy: { name: "asc" },
     });
 
@@ -24,6 +34,7 @@ export async function GET(req: NextRequest) {
     );
   }
 }
+
 
 export async function POST(req: NextRequest) {
   const { userId } = auth();

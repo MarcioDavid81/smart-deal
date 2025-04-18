@@ -2,7 +2,6 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { useEffect, useState } from "react";
-import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { FaSpinner } from "react-icons/fa";
 import { DataTable } from "@/components/ui/data-table";
