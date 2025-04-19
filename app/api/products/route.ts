@@ -39,27 +39,34 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   const { userId } = auth();
 
+  // Verificação de autenticação
   if (!userId) {
     return NextResponse.json({ message: "Não autorizado" }, { status: 401 });
   }
 
   try {
     const body = await req.json();
-    const { name, description, unit, price, quantity, companyId } = body;
+    const { name, description, unit, price, quantity } = body;
 
-    if (
-      !name ||
-      !unit ||
-      price === undefined ||
-      quantity === undefined ||
-      !companyId
-    ) {
+    // Verificação dos campos obrigatórios
+    if (!name || !unit || price === undefined || quantity === undefined) {
       return NextResponse.json(
         { message: "Campos obrigatórios ausentes." },
         { status: 400 }
       );
     }
 
+    // Recupera a empresa associada ao usuário logado (caso seja relevante no seu caso)
+    const user = await db.user.findUnique({
+      where: { id: userId },
+      select: { companyId: true },
+    });
+
+    if (!user) {
+      return NextResponse.json({ message: "Usuário não encontrado" }, { status: 404 });
+    }
+
+    // Criação do produto, associando-o à empresa do usuário
     const product = await db.product.create({
       data: {
         name,
@@ -68,7 +75,7 @@ export async function POST(req: NextRequest) {
         price,
         quantity,
         userId,
-        companyId,
+        companyId: user.companyId, // Associa o produto à empresa do usuário
       },
     });
 

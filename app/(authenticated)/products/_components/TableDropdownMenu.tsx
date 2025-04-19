@@ -18,6 +18,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ProductProps } from "@/types";
 import {
   ClipboardCopyIcon,
   EditIcon,
@@ -25,7 +26,11 @@ import {
   Trash2Icon,
 } from "lucide-react";
 
-const ProductsTableDropdownMenu = () => {
+interface ProductsTableDropdownMenuProps {
+  product: ProductProps;
+}
+
+const ProductsTableDropdownMenu = ({ product }: ProductsTableDropdownMenuProps) => {
   return (
     <AlertDialog>
       <DropdownMenu>

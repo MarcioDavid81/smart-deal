@@ -21,12 +21,25 @@ export default async function NovoProduto() {
 
   if (!userId) return <div>Não autorizado</div>;
 
-  const company = await db.company.findFirst({
-    where: { userId },
-    select: { id: true },
-  });
+  // Encontre o usuário e busque o companyId associado a ele
+const user = await db.user.findUnique({
+  where: { id: userId },
+  select: { companyId: true },
+});
 
-  if (!company) return <div>Nenhuma empresa vinculada ao usuário.</div>;
+if (!user?.companyId) {
+  return <div>Usuário não possui uma empresa vinculada.</div>;
+}
+
+// Agora, use o companyId para buscar a empresa
+const company = await db.company.findUnique({
+  where: { id: user.companyId },
+  select: { id: true },
+});
+
+if (!company) {
+  return <div>Empresa não encontrada.</div>;
+}
 
   return (
     <div className="flex flex-col w-full min-h-screen bg-primary">

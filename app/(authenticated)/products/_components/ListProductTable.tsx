@@ -8,12 +8,15 @@ import { FaSpinner } from "react-icons/fa";
 import { ProductProps } from "@/types";
 import { DataTable } from "@/components/ui/data-table";
 import ProductsTableDropdownMenu from "./TableDropdownMenu";
+import { EditProductModal } from "./EditProductModal";
 
 export function ListProductTable() {
   const [products, setProducts] = useState<ProductProps[]>([]);
   const [loading, setLoading] = useState(true);
+  const [editOpen, setEditOpen] = useState(false);
+  const [product, setProduct] = useState<ProductProps | null>(null);
 
-  useEffect(() => {
+
     async function fetchProducts() {
       try {
         const res = await fetch("/api/products");
@@ -26,6 +29,7 @@ export function ListProductTable() {
       }
     }
 
+  useEffect(() => {
     fetchProducts();
   }, []);
 
@@ -48,7 +52,7 @@ export function ListProductTable() {
       header: "Estoque",
       cell: ({ row }) => (
         <Badge
-        variant={row.original.quantity > 0 ? "default" : "outline"}
+          variant={row.original.quantity > 0 ? "default" : "outline"}
           className={`${
             row.original.quantity > 0 ? "text-gray-50" : "text-primary"
           }`}
@@ -67,10 +71,8 @@ export function ListProductTable() {
       header: "Ações",
       cell: ({ row }) => {
         const product = row.original;
-  
-        return (
-          <ProductsTableDropdownMenu product={product} />
-        );
+
+        return <ProductsTableDropdownMenu product={product} />;
       },
     },
   ];
@@ -88,6 +90,13 @@ export function ListProductTable() {
       ) : (
         <DataTable columns={columns} data={products} />
       )}
+      {/* Modais */}
+      <EditProductModal
+        isOpen={editOpen}
+        onClose={() => setEditOpen(false)}
+        product={product}
+        onUpdated={fetchProducts}
+      />
     </Card>
   );
 }

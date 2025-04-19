@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Sidebar from "./_components/Sidebar";
 import { dark } from "@clerk/themes";
 import { Toaster } from "sonner";
+import { ptBR } from '@clerk/localizations'
 
 const inter = Inter({
   weight: ["400", "700"],
@@ -40,6 +41,7 @@ export default function RootLayout({
       appearance={{
         baseTheme: dark,
       }}
+      localization={ptBR}
     >
       <html lang="pt-BR">
         <body

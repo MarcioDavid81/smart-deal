@@ -9,7 +9,10 @@ export async function POST(req: Request) {
   if (!userId) return new Response("Não autenticado", { status: 401 });
 
   const company = await db.company.create({
-    data: { name },
+    data: {
+      name,
+      userId,
+    },
   });
 
   await db.userCompany.create({
