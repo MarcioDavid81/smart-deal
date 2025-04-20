@@ -25,7 +25,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
   });
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 dark:bg-primary rounded-md">
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -64,9 +64,9 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
       </div>
 
       {/* Paginação */}
-      <div className="flex items-center justify-end space-x-2">
+      <div className="flex items-center justify-end space-x-2 dark:text-primary">
         <Button
-          variant="outline"
+          variant="secondary"
           size="sm"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
@@ -74,7 +74,7 @@ export function DataTable<TData, TValue>({ columns, data }: DataTableProps<TData
           Anterior
         </Button>
         <Button
-          variant="outline"
+          variant="secondary"
           size="sm"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}

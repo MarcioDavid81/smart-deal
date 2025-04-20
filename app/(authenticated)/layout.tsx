@@ -5,7 +5,8 @@ import { ClerkProvider } from "@clerk/nextjs";
 import Sidebar from "./_components/Sidebar";
 import { dark } from "@clerk/themes";
 import { Toaster } from "sonner";
-import { ptBR } from '@clerk/localizations'
+import { ptBR } from '@clerk/localizations';
+import { ThemeProvider } from "./_components/theme-provider";
 
 const inter = Inter({
   weight: ["400", "700"],
@@ -47,9 +48,16 @@ export default function RootLayout({
         <body
           className={`${inter.className} antialiased md:flex  w-full min-h-screen`}
         >
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
           <Sidebar />
           {children}
           <Toaster />
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>

@@ -53,9 +53,7 @@ export function ListProductTable() {
       cell: ({ row }) => (
         <Badge
           variant={row.original.quantity > 0 ? "default" : "outline"}
-          className={`${
-            row.original.quantity > 0 ? "text-gray-50" : "text-primary"
-          }`}
+          className="dark:bg-primary dark:text-white"
         >
           {row.original.quantity}
         </Badge>
@@ -78,7 +76,7 @@ export function ListProductTable() {
   ];
 
   return (
-    <Card className="p-4">
+    <Card className="p-4 dark:bg-primary">
       <div className="mb-4">
         <h3>Produtos Cadastrados</h3>
       </div>

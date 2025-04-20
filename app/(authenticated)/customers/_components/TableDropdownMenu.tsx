@@ -34,7 +34,7 @@ import {
               <MoreHorizontalIcon size={16} />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
+          <DropdownMenuContent className="dark:bg-primary">
             <DropdownMenuLabel>Ações em Pedidos</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem className="gap-1.5">

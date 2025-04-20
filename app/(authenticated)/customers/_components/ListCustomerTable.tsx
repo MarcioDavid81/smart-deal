@@ -73,7 +73,7 @@ export function ListCustomerTable() {
   ];
 
   return (
-    <Card className="p-4">
+    <Card className="p-4 dark:bg-primary">
       <div className="mb-4">
         <h3>Clientes Cadastrados</h3>
       </div>

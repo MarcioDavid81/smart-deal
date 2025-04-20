@@ -16,6 +16,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { ModeToggle } from "./Toggle-theme";
 
 const routes = [
   {
@@ -55,7 +56,7 @@ const Sidebar = () => {
     <div
       className={`${
         isOpen ? "w-64" : "w-20"
-      } bg-primary text-gray-50  flex-col justify-between p-6 space-y-6 sticky top-0 min-h-screen transition-all duration-300 ease-in-out hidden md:flex`}
+      } bg-gray-50 text-primary  flex-col justify-between p-6 space-y-6 sticky top-0 min-h-screen transition-all duration-300 ease-in-out hidden md:flex dark:bg-primary dark:text-gray-50`}
     >
       <div className={`absolute -right-3 top-5 cursor-pointer rounded-full border-[3px] bg-primary border-secondary text-secondary ${
           !isOpen && "rotate-180"
@@ -115,8 +116,14 @@ const Sidebar = () => {
           ))}
         </nav>
       </div>
+
+      <div>
+        <div className="flex flex-col items-center gap-4 font-bold border-b-2 pb-4 border-zinc-500">
+          <ModeToggle />
+        </div>
+      </div>
       
-      <div className="flex flex-col items-center pt-4">
+      <div className="flex flex-col items-center p-1 rounded-md bg-zinc-800 dark:bg-transparent">
         <UserButton showName={isOpen} />
       </div>
     </div>

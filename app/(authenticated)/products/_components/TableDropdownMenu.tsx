@@ -39,7 +39,7 @@ const ProductsTableDropdownMenu = ({ product }: ProductsTableDropdownMenuProps) 
             <MoreHorizontalIcon size={16} />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent>
+        <DropdownMenuContent className="dark:bg-primary">
           <DropdownMenuLabel>Ações em Produtos</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem className="gap-1.5">
