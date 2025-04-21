@@ -17,6 +17,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { ModeToggle } from "./Toggle-theme";
+import { PanelRightOpen } from "lucide-react";
 
 const routes = [
   {
@@ -58,12 +59,12 @@ const Sidebar = () => {
         isOpen ? "w-64" : "w-20"
       } bg-gray-50 text-primary  flex-col justify-between p-6 space-y-6 sticky top-0 min-h-screen transition-all duration-300 ease-in-out hidden md:flex dark:bg-primary dark:text-gray-50`}
     >
-      <div className={`absolute -right-3 top-5 cursor-pointer rounded-full border-[3px] bg-primary border-secondary text-secondary ${
+      <div className={`absolute -right-3 top-5 cursor-pointer rounded-full border-[3px] bg-primary p-1 text-secondary ${
           !isOpen && "rotate-180"
         }`}
         onClick={() => setIsOpen(!isOpen)}
       >
-      <IoMdArrowRoundBack size={28} />
+      <PanelRightOpen className="h-6 w-6" />
       </div>
       
       <div>

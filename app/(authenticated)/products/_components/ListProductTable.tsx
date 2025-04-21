@@ -9,6 +9,8 @@ import { ProductProps } from "@/types";
 import { DataTable } from "@/components/ui/data-table";
 import ProductsTableDropdownMenu from "./TableDropdownMenu";
 import { EditProductModal } from "./EditProductModal";
+import { Button } from "@/components/ui/button";
+import { ArrowUpDown } from "lucide-react";
 
 export function ListProductTable() {
   const [products, setProducts] = useState<ProductProps[]>([]);
@@ -36,7 +38,18 @@ export function ListProductTable() {
   const columns: ColumnDef<ProductProps>[] = [
     {
       accessorKey: "name",
-      header: "Nome",
+      header: ({ column }) => {
+        return (
+          <Button
+            variant="ghost"
+            className="text-left px-0"
+            onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          >
+            Nome
+            <ArrowUpDown className="ml-2 h-4 w-4" />
+          </Button>
+        )
+      }
     },
     {
       accessorKey: "description",
