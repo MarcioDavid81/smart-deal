@@ -59,7 +59,7 @@ const Sidebar = () => {
         isOpen ? "w-64" : "w-20"
       } bg-gray-50 text-primary  flex-col justify-between p-6 space-y-6 sticky top-0 min-h-screen transition-all duration-300 ease-in-out hidden md:flex dark:bg-primary dark:text-gray-50`}
     >
-      <div className={`absolute -right-3 top-5 cursor-pointer rounded-full border-[3px] bg-primary p-1 text-secondary ${
+      <div className={`absolute -right-3 top-5 cursor-pointer rounded-full  bg-gray-50 dark:bg-primary p-1 text-primary dark:text-secondary ${
           !isOpen && "rotate-180"
         }`}
         onClick={() => setIsOpen(!isOpen)}

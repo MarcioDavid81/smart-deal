@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function Products() {
 
   return (
-    <div className="flex flex-col w-full min-h-screen bg-gray-50 dark:bg-primary">
+    <div className="flex flex-col w-full min-h-screen bg-found dark:bg-primary">
       <div className="min-h-screen  w-full flex bg-found rounded-lg">
         <main className="flex-1 py-4 px-4 md:px-8 text-gray-800">
           <div className="flex justify-between items-center mb-6">
