@@ -6,6 +6,7 @@ import NewProductForm from "../_components/NewProductForm";
 import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/prisma";
 import { Metadata } from "next";
+import HoverButton from "../../_components/HoverButton";
 
 export const metadata: Metadata = {
   title: "Novo Produto",
@@ -48,10 +49,10 @@ if (!company) {
           <div className="flex justify-between items-center mb-6">
             <h1>Novo Produto</h1>
             <Link href="/products">
-              <Button className="bg-secondary text-primary hover:bg-secondary/90">
+              <HoverButton >
                 <GrReturn className="h-4 w-4" aria-hidden="true" />
                 Voltar
-              </Button>
+              </HoverButton>
             </Link>
           </div>
           <div className="bg-found p-6 rounded-xl shadow-md">

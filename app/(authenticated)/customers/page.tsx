@@ -4,6 +4,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import React from 'react'
 import { ListCustomerTable } from './_components/ListCustomerTable';
+import HoverButton from '../_components/HoverButton';
 
 export const metadata: Metadata = {
   title: "Clientes",
@@ -22,10 +23,10 @@ export default function Customers() {
           <div className="flex justify-between items-center mb-6">
               <h1>Clientes</h1>
               <Link href="/customers/novo">
-              <Button className="bg-secondary text-primary hover:bg-secondary/90">
+              <HoverButton>
                 <PlusIcon className="h-4 w-4" aria-hidden="true" />
                 Novo Cliente
-              </Button>
+              </HoverButton>
             </Link>
             </div>
             <ListCustomerTable />

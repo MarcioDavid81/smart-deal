@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
 import { PlusIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 import { ListProductTable } from "./_components/ListProductTable";
 import { Metadata } from "next";
+import HoverButton from "../_components/HoverButton";
 
 export const metadata: Metadata = {
   title: "Produtos",
@@ -23,10 +23,10 @@ export default function Products() {
           <div className="flex justify-between items-center mb-6">
             <h1>Produtos</h1>
             <Link href="/products/novo">
-              <Button className="bg-secondary text-primary hover:bg-secondary/90">
+              <HoverButton>
                 <PlusIcon className="h-4 w-4" aria-hidden="true" />
                 Novo Produto
-              </Button>
+              </HoverButton>
             </Link>
           </div>
           <ListProductTable />
